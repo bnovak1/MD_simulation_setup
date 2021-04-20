@@ -27,3 +27,9 @@ Python script for converting PLA to PLGA 50:50 by replacing each methyl side cha
 ### inputs/build.Snakefile
 
 Snakefile for applying the 2 scripts above. Independent usage of the scripts can also be determined from here. Requires [snakemake](https://snakemake.readthedocs.io/).
+
+# LigninBuilder_GROMACS
+
+Build chosen library(ies) that come with LigninBuilder, sort structures by number of monomers, create GROMACS .top files for structures with desired sizes, energy minimize structures with GROMACS.
+
+
