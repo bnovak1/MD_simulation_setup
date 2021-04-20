@@ -42,7 +42,7 @@ Create dictionary with lists of file names for each lignin size (number of monom
 
 ## input/build.Snakefile
 
-Build a set of lignin structures with specified sizes from specified Lignin Builder libraries, and sort structures by number of lignin monomers. Must run the size_listss rule before using input/minimize.Snakefile. Requires [Visual Molecular Dynamics (VMD)](https://www.ks.uiuc.edu/Research/vmd/), [LigninBuilder](https://github.com/jvermaas/LigninBuilder/tree/master/LigninBuilderPlugin), and [snakemake](https://snakemake.readthedocs.io/).
+Build a set of lignin structures with specified sizes from specified Lignin Builder libraries, and sort structures by number of lignin monomers. Must run the size_listss rule before using input/minimize.Snakefile. Requires [Visual Molecular Dynamics (VMD)](https://www.ks.uiuc.edu/Research/vmd/), [LigninBuilder](https://github.com/jvermaas/LigninBuilder/tree/master/LigninBuilderPlugin), and [snakemake](https://snakemake.readthedocs.io/). Uses scripts/sort_by_size.py and scripts/size_lists.py.
 
 ## input/minimize.Snakefile
 
