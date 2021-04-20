@@ -1,5 +1,7 @@
 '''
-Build a set of lignin structures with specified sizes from specified Lignin Builder libraries.
+Build a set of lignin structures with specified sizes from specified Lignin Builder libraries, 
+and sort structures by number of lignin monomers. 
+Must run the size_listss rule before using minimize.Snakefile.
 '''
 
 import glob
