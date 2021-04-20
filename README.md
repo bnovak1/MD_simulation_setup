@@ -26,4 +26,4 @@ Python script for converting PLA to PLGA 50:50 by replacing each methyl side cha
 
 ### inputs/build.Snakefile
 
-Snakefile for applying the 2 scripts above. Independent usage of the scripts can alos be determined from here. Requires [snakemake](https://snakemake.readthedocs.io/).
+Snakefile for applying the 2 scripts above. Independent usage of the scripts can also be determined from here. Requires [snakemake](https://snakemake.readthedocs.io/).
