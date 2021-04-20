@@ -1,3 +1,8 @@
+'''
+Create dictionary with lists of file names for each lignin size (number of monomers). 
+Write to a new file in the directory input called size_lists.json, and add to config.json.
+'''
+
 import glob
 import json
 import os
@@ -6,10 +11,10 @@ import sys
 
 class WriteSizeLists:
 
-    # def __init__(self, species, directory):
-
-
     def __call__(self, species, directory):
+        '''
+        Input species name and name of directory containing the lignin structures.
+        '''
 
         self._species = species
         self._directory = directory
@@ -22,6 +27,9 @@ class WriteSizeLists:
         self._write_json()
 
     def _get_size_dict(self):
+        '''
+        Build the dictionary with file name lists for each lignin size.
+        '''
 
         size_dict = {}
 
@@ -35,6 +43,9 @@ class WriteSizeLists:
         return size_dict
 
     def _write_json(self):
+        '''
+        Write to size_lists.json. Update config.json
+        '''
 
         with open(os.path.join(self._directory, 'size_lists.json'), 'w') as jf:
             json.dump(self._size_dict, jf, indent=4)
