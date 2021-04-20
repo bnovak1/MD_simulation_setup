@@ -30,7 +30,7 @@ Snakefile for applying the 2 scripts above. Independent usage of the scripts can
 
 ## LigninBuilder_GROMACS
 
-Build chosen library(ies) that come with LigninBuilder, sort structures by number of monomers, create GROMACS .top files for structures with desired sizes, energy minimize structures with GROMACS.
+Build chosen library(ies) that come with LigninBuilder, sort structures by number of monomers, create GROMACS .top files for structures with desired sizes, energy minimize structures with GROMACS. Also see this [post](https://wp.me/p9QWVm-3x).
 
 ## scripts/sort_by_size.py
 
