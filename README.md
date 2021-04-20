@@ -4,7 +4,7 @@ Scripts to help with setting up molecular dynamics simulations.
 
 ## gzmat_to_polymod.py ([docs](https://github.com/bnovak1/MD_simulation_setup/wiki/gzmat_to_polymod.py))
 
-Convert a Gaussian gzmat file (```infile```) for a monomer with ```nbackbone``` backbone atoms to a Z-matrix file for use with NanoHUB Polymer Modeler.
+Convert a Gaussian gzmat file (```infile```) for a monomer with ```nbackbone``` backbone atoms to a Z-matrix file for use with NanoHUB Polymer Modeler. Gaussian gzmat files can be created from other types of structure files using Open Babel. See this [post](https://wp.me/p9QWVm-1R).
 
 ## CHARMM-GUI_PLA_to_PLGA ([docs](https://github.com/bnovak1/MD_simulation_setup/wiki/CHARMM-GUI_PLA_to_PLGA))
 
