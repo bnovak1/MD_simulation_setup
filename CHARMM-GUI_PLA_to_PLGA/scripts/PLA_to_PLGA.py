@@ -19,12 +19,12 @@ def read_pdb(infile):
 
     return data
 
-def replace_methyls(infile, data):
+def replace_methyls(infile, data, outdir):
     '''
     Replace methyl side chains with a hydrogen with a 50% probability.
     '''
 
-    outfile = infile.replace('PLA', 'PLGA')
+    outfile = os.path.split(infile.replace('PLA', 'PLGA'))[1]
 
     # Replace CH3 with H randomly
     ind = np.ones(data.shape[0], dtype=bool)
@@ -36,13 +36,23 @@ def replace_methyls(infile, data):
 
         line = data[iline]
         if line[:4] == 'ATOM' and line[13:16] == 'C3 ' and line[17:20] == 'LAA':
+            
             if np.random.choice([0, 1]) == 0:
-                for i in range(iline-5, iline):
-                    data[i] = data[i].replace('LAA ', 'GLA ')
+                
+                if data[iline][22:26].strip() == '1':
+                    lines_behind = 6
+                else:
+                    lines_behind = 5
+                                    
                 if data[iline-1][13:16] != 'H22':
                     data[iline] = data[iline].replace('C3 ', 'H22')
                 else:
                     data[iline] = data[iline].replace('C3 ', 'H23')
+                    lines_behind = 6
+
+                for i in range(iline-lines_behind, iline+1):
+                    data[i] = data[i].replace('LAA ', 'GLA ')
+                
                 ind[iline+1:iline+4] = 0
                 iline += 3
 
@@ -51,6 +61,7 @@ def replace_methyls(infile, data):
     data = data[ind]
 
     # Write data to new pdb file
+    outfile = os.path.join(outdir, outfile)
     with open(outfile, 'w') as fid:
         for line in data:
             fid.write(line)
@@ -111,14 +122,18 @@ def minimize(infile):
     str_in = 'obminimize -ff GAFF ' + infile + ' > ' + outfile
     subprocess.run(str_in, shell=True, check=True)
 
-def main(infile):
+def main(infile, outdir):
 
     data = read_pdb(infile)
-    (data, bonds_list, plga_file) = replace_methyls(infile, data)
+    (data, bonds_list, plga_file) = replace_methyls(infile, data, outdir)
     bonded_file = add_bonds(plga_file, bonds_list)
     minimize(bonded_file)
 
 if __name__ == '__main__':
 
     INFILE = sys.argv[1]
-    main(INFILE)
+    try:
+        OUTDIR = sys.argv[2]
+    except IndexError:
+        OUTDIR = os.path.split(INFILE)[0]
+    main(INFILE, OUTDIR)
